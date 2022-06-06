@@ -4,6 +4,9 @@ require('./config/dbConfig.js');
 const userRoutes = require('./routes/user.routes');
 const app = express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+
 //routes
 app.use('/api/user', userRoutes)
 
