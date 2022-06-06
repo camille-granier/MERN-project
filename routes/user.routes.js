@@ -3,7 +3,9 @@ const authController = require('../controllers/auth.controller');
 const userController = require('../controllers/user.controller');
 
 //authentication
-router.post("/register", authController.signUp);
+router.post('/register', authController.signUp);
+router.post('/login', authController.signIn);
+router.get('/logout', authController.logout);
 
 //user DB
 //all users
