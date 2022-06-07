@@ -1,51 +1,41 @@
 const mongoose = require('mongoose');
 
-postSchema = new mongoose.Schema(
-    {
-        posterId: {
-            type: String,
-            required: true
-        }
+const PostSchema = new mongoose.Schema(
+  {
+    posterId: {
+      type: String,
+      required: true
     },
-    {
-        message: {
-            type: String,
-            required: true,
-            maxLength: 500
-        }
+    message: {
+      type: String,
+      trim: true,
+      maxlength: 500,
     },
-    {
-        picture: {
-            type: String
-        }
+    picture: {
+      type: String,
     },
-    {
-        video: {
-            type: String
-        }
+    video: {
+      type: String,
     },
-    {
-        likers: {
-            type: String,
-            required: true
-        }
-    }
-    {
-        comments: {
-            type: [
-                {
-                    commenterId: String,
-                    commenterPseudo: String,
-                    text: String,
-                    timeStamp: Number
-                }
-            ],
-            required: true
-        }
+    likers: {
+      type: [String],
+      required: true,
     },
-    {
-        timeStamps: true
-    }
-)
+    comments: {
+      type: [
+        {
+          commenterId:String,
+          commenterPseudo: String,
+          text: String,
+          timestamp: Number,
+        }
+      ],
+      required: true,
+    },
+  },
+  {
+    timestamps: true,
+  }
+);
 
 module.exports = mongoose.model('post', PostSchema);
