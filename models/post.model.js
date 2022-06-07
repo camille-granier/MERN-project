@@ -24,4 +24,28 @@ postSchema = new mongoose.Schema(
             type: String
         }
     },
+    {
+        likers: {
+            type: String,
+            required: true
+        }
+    }
+    {
+        comments: {
+            type: [
+                {
+                    commenterId: String,
+                    commenterPseudo: String,
+                    text: String,
+                    timeStamp: Number
+                }
+            ],
+            required: true
+        }
+    },
+    {
+        timeStamps: true
+    }
 )
+
+module.exports = mongoose.model('post', PostSchema);
