@@ -7,10 +7,22 @@ const { checkUser, requireAuth } = require('./middleware/auth.middleware');
 const userRoutes = require('./routes/user.routes');
 const postRoutes = require('./routes/post.routes');
 const app = express();
+//package to provide middleware to enable access to data outside of given domain
+const cors = require('cors');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+const corsOptions = {
+  origin: process.env.CLIENT_URL,
+  credentials: true,
+  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+}
+app.use(cors(corsOptions));
 
 // jwt
 app.get('*', checkUser);
