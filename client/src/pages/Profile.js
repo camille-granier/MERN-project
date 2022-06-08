@@ -3,7 +3,7 @@ import Log from '../components/Log';
 
 const Profile = () => {
     return (
-        <div className='profil'>
+        <div className='profile'>
             <div className='auth-container'></div>
             <Log />
             <div className='log-img-container'>
