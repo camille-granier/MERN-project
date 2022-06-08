@@ -5,7 +5,7 @@ const Profile = () => {
     return (
         <div className='profile'>
             <div className='auth-container'></div>
-            <Log />
+            <Log signup={true} signin={true} />
             <div className='log-img-container'>
                 <img src='./img/birdy.jpg' alt="login pic"/>
             </div>

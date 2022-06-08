@@ -3,10 +3,10 @@ import SignIn from './SignIn';
 import Register from './Register';
 
 
-const Log = () => {
+const Log = ( props ) => {
 
-    const [SignUp, setSignUp] = useState(true);
-    const [signIn, setSignIn] = useState(false);
+    const [signUp, setSignUp] = useState(props.signup);
+    const [signIn, setSignIn] = useState(props.signin);
 
     const handleSign = (e) => {
         if(e.target.id === 'signIn') {
@@ -21,11 +21,11 @@ const Log = () => {
     return (
         <div>
             <ul>
-                <li onClick={handleSign} id='register' className={SignUp ? 'btn-active' : 'btn-inactive'}>Sign up</li>
+                <li onClick={handleSign} id='register' className={signUp ? 'btn-active' : 'btn-inactive'}>Sign up</li>
                 <li onClick={handleSign} id="signIn" className={SignIn ? 'btn-active' : 'btn-inactive'}>Sign in</li>
             </ul>
-            {SignUp && Register}
-            {SignIn && SignIn}
+            {signUp && <Register/>}
+            {signIn && <SignIn/>}
         </div>
     );
 };
