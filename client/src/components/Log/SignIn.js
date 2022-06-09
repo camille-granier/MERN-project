@@ -23,8 +23,13 @@ const SignIn = () => {
                if(res.data.errors) {
                 emailError.innerHTML = res.data.errors.email
                 passwordError.innerHTML = res.data.errors.password
+               } else {
+                 window.location='/'
                }
            })
+           .catch((err) => {
+             console.log(err);
+            })
   };
 
   return (
